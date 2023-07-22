@@ -1,4 +1,4 @@
-import getRandomHexColor from './RandomHexColor';
+import getRandomHexColor from `@parcel/transformer-sass`;
 
 const dataStartRef = document.querySelector('[data-start]');
 const dataStopRef = document.querySelector('[data-stop]');
