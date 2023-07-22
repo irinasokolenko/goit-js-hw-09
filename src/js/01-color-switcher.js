@@ -1,4 +1,4 @@
-import getRandomHexColor from './randomHexColor';
+import getRandomHexColor from './RandomHexColor';
 
 const dataStartRef = document.querySelector('[data-start]');
 const dataStopRef = document.querySelector('[data-stop]');
