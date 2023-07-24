@@ -1,8 +1,9 @@
-import flatpickr from "flatpickr";
+import flatpickr from 'flatpickr';
 import convertMs from './convertMs';
-import  Notifyx  from 'notiflix';
+import Notiflix from 'notiflix';
+import 'flatpickr/dist/flatpickr.min.css';
 
-import "flatpickr/dist/flatpickr.min.css";
+import 'flatpickr/dist/flatpickr.min.css';
 
 let getRef = selector => document.querySelector(selector);
 const imputDatePickerRef = getRef('#datetime-picker');
@@ -29,15 +30,15 @@ const options = {
 
 btnStartRef.setAttribute('disabled', true);
 
-flatpickr(imputDatePickerRef, options);
+const flatp = flatpickr(imputDatePickerRef, options);
 
 btnStartRef.addEventListener('click', onBtnStart);
 
 window.addEventListener('keydown', e => {
-    if (e.code === 'Escape' && timerId) {
-      clearInterval(timerId);
+  if (e.code === 'Escape' && timerId) {
+    clearInterval(timerId);
 
-      imputDatePickerRef.removeAttribute('disabled');
+    imputDatePickerRef.removeAttribute('disabled');
     btnStartRef.setAttribute('disabled', true);
 
     secondsRef.textContent = '00';
@@ -47,44 +48,42 @@ window.addEventListener('keydown', e => {
   }
 });
 function onBtnStart() {
-    timerId = setInterval(startTimer, 1000);
-  }
+  timerId = setInterval(startTimer, 1000);
+}
 
-  function currentDifferenceDate(selectedDates) {
-    const currentDate = Date.now();
+function currentDifferenceDate(selectedDates) {
+  const currentDate = Date.now();
 
-    if (selectedDates < currentDate) {
-        btnStartRef.setAttribute('disabled', true);
-        return Notify.failure('Please choose a date in the future');
-      }
-    
-      timeDifference = selectedDates.getTime() - currentDate;
-      formatDate = convertMs(timeDifference);
-    
-      renderDate(formatDate);
-      btnStartRef.removeAttribute('disabled');
-    }
-  //timer
-  function startTimer() {
+  if (selectedDates < currentDate) {
     btnStartRef.setAttribute('disabled', true);
-    imputDatePickerRef.setAttribute('disabled', true);
-  
-    timeDifference -= 1000;
-  
-    if (secondsRef.textContent <= 0 && minutesRef.textContent <= 0) {
-      Notify.success('Time end');
-      clearInterval(timerId);
-    } else {
-      formatDate = convertMs(timeDifference);
-      renderDate(formatDate);
-    }
-  }  
-  //data
-  function renderDate(formatDate) {
-    secondsRef.textContent = formatDate.seconds;
-    minutesRef.textContent = formatDate.minutes;
-    hoursRef.textContent = formatDate.hours;
-    daysRef.textContent = formatDate.days;
+    return Notiflix.Notify.failure('Please choose a date in the future');
   }
-  
-  
+
+  timeDifference = selectedDates.getTime() - currentDate;
+  formatDate = convertMs(timeDifference);
+
+  renderDate(formatDate);
+  btnStartRef.removeAttribute('disabled');
+}
+//timer
+function startTimer() {
+  btnStartRef.setAttribute('disabled', true);
+  imputDatePickerRef.setAttribute('disabled', true);
+
+  timeDifference -= 1000;
+
+  if (secondsRef.textContent <= 0 && minutesRef.textContent <= 0) {
+    Notiflix.Notify.success('Time end');
+    clearInterval(timerId);
+  } else {
+    formatDate = convertMs(timeDifference);
+    renderDate(formatDate);
+  }
+}
+//data
+function renderDate(formatDate) {
+  secondsRef.textContent = formatDate.seconds;
+  minutesRef.textContent = formatDate.minutes;
+  hoursRef.textContent = formatDate.hours;
+  daysRef.textContent = formatDate.days;
+}
