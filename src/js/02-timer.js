@@ -1,5 +1,5 @@
 import flatpickr from "flatpickr";
-import convertMs from './dateConvert';
+import convertMs from './convertMs';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import "flatpickr/dist/flatpickr.min.css";
