@@ -3,7 +3,6 @@ import convertMs from './convertMs';
 import Notiflix from 'notiflix';
 import 'flatpickr/dist/flatpickr.min.css';
 
-import 'flatpickr/dist/flatpickr.min.css';
 
 let getRef = selector => document.querySelector(selector);
 const imputDatePickerRef = getRef('#datetime-picker');
@@ -80,4 +79,10 @@ function startTimer() {
     renderDate(formatDate);
   }
 }
-
+//data
+function renderDate(formatDate) {
+  secondsRef.textContent = formatDate.seconds;
+  minutesRef.textContent = formatDate.minutes;
+  hoursRef.textContent = formatDate.hours;
+  daysRef.textContent = formatDate.days;
+}
