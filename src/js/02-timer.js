@@ -1,6 +1,6 @@
 import flatpickr from "flatpickr";
 import convertMs from './convertMs';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import  Notifyx  from 'notiflix';
 
 import "flatpickr/dist/flatpickr.min.css";
 
