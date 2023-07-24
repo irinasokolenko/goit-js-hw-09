@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-document.body.style.backgroundColor = '#f7eff5';
+document.body.style.backgroundColor = '#145ff';
 const form = document.querySelector('form.form');
 const options = {
   position: 'center-bottom',
