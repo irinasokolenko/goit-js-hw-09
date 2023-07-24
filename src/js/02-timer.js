@@ -1,5 +1,7 @@
 import flatpickr from "flatpickr";
 import convertMs from './dateConvert';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import "flatpickr/dist/flatpickr.min.css";
 
 let getRef = selector => document.querySelector(selector);
