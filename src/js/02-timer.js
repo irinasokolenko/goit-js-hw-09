@@ -80,10 +80,4 @@ function startTimer() {
     renderDate(formatDate);
   }
 }
-//data
-function renderDate(formatDate) {
-  secondsRef.textContent = formatDate.seconds;
-  minutesRef.textContent = formatDate.minutes;
-  hoursRef.textContent = formatDate.hours;
-  daysRef.textContent = formatDate.days;
-}
+
