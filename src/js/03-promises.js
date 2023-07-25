@@ -37,8 +37,9 @@ function onPromiseCreate(e) {
           `✅ Fulfilled promise ${position} in ${delay}ms`,
           options
         );
+        inputDelay += inputStep; 
       })
-      inputDelay += inputStep;
+     
       .catch(({ position, delay }) => {
         Notiflix.Notify.failure(
           `❌ Rejected promise ${position} in ${delay}ms`,
