@@ -16,23 +16,4 @@ img {
   display: block;
   max-width: 100%;
 }
-input#datetime-picker {
-  width: 200px;
-  height: 32px;
-  border: none;
-  background: #f1ebe5;
-  box-shadow: 0 6px 8px #c4b59d, 0 -2px 1px #fff;
 
-  text-align: center;
-  color: #fb0404;
-  font-weight: 600;
-}
-
-input#datetime-picker[disabled] {
-  color: #ab803c;
-}
-
-[disabled] {
-  color: #ab803c;
-  animation: none;
-}
