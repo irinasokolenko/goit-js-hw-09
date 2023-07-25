@@ -31,7 +31,7 @@ function onPromiseCreate(e) {
 
   for (let i = 1; i <= inputAmount; i += 1) {
      createPromise(i, inputDelay)
-    inputDelay += inputStep;
+   
       .then(({ position, delay }) => {
         Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${delay}ms`,
@@ -45,5 +45,6 @@ function onPromiseCreate(e) {
         );
       });
     e.currentTarget.reset();
+     inputDelay += inputStep;
   }
 }
