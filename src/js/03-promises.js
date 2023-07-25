@@ -34,9 +34,9 @@ function onPromiseCreate(e) {
       .then(({ position, delay }) => {
         Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${delay}ms`,
-          inputDelay += inputStep;
           options
         );
+         inputDelay += inputStep;
       })
       
       .catch(({ position, delay }) => {
