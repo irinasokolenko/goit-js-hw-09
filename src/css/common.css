@@ -32,7 +32,7 @@ img {
   text-align: center;
   letter-spacing: 4px;
   color: #f1ebe5;
-  text-shadow: 0 6px 8px #a89dc4, 0px -3px 1px #563bb7;
+  text-shadow: 0 6px 8px #bde216, 0px -3px 1px #7b5de7;
 }
 .label {
   text-align: center;
@@ -40,7 +40,7 @@ img {
   font-weight: 400;
   text-transform: uppercase;
   color: #f1ebe5;
-  text-shadow: 0px 4px 4px #2b066a, 0 -2px 1px #823fb9;
+  text-shadow: 0px 4px 4px #bde216, 0 -2px 1px #7b5de7;
 }
 .flatpickr-months {
   background-color: antiquewhite;
