@@ -27,16 +27,15 @@ function onPromiseCreate(e) {
   let inputDelay = Number(delay.value);
   let inputStep = Number(step.value);
   let inputAmount = Number(amount.value);
-   inputDelay += inputStep;
+
   for (let i = 1; i <= inputAmount; i += 1) {
-    
+    inputDelay += inputStep;
     createPromise(i, inputDelay)
       .then(({ position, delay }) => {
         Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${delay}ms`,
           options
         );
-        
       })
       
       .catch(({ position, delay }) => {
