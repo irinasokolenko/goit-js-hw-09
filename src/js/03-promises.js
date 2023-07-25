@@ -1,5 +1,4 @@
 import Notiflix from 'notiflix';
-document.body.style.backgroundColor = '#145ff';
 const form = document.querySelector('form.form');
 const options = {
   position: 'center-bottom',
@@ -9,9 +8,7 @@ const options = {
   clickToClose: true,
   cssAnimationStyle: 'from-right',
 };
-
 form.addEventListener('click', onPromiseCreate);
-
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     const shouldResolve = Math.random() > 0.3;
@@ -24,7 +21,6 @@ function createPromise(position, delay) {
     }, delay);
   });
 }
-
 function onPromiseCreate(e) {
   e.preventDefault();
   const { delay, step, amount } = e.currentTarget.elements;
@@ -33,7 +29,7 @@ function onPromiseCreate(e) {
   let inputAmount = Number(amount.value);
 
   for (let i = 1; i <= inputAmount; i += 1) {
-    inputDelay += inputStep;
+    
 
     createPromise(i, inputDelay)
       .then(({ position, delay }) => {
@@ -42,6 +38,7 @@ function onPromiseCreate(e) {
           options
         );
       })
+      inputDelay += inputStep;
       .catch(({ position, delay }) => {
         Notiflix.Notify.failure(
           `❌ Rejected promise ${position} in ${delay}ms`,
