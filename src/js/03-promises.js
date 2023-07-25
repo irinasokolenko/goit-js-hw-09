@@ -22,29 +22,49 @@ function createPromise(position, delay) {
     }, delay);
   });
 }
+// function onPromiseCreate(e) {
+//   e.preventDefault();
+//   const { delay, step, amount } = e.currentTarget.elements;
+//   let inputDelay = Number(delay.value);
+//   let inputStep = Number(step.value);
+//   let inputAmount = Number(amount.value);
+
+//   for (let i = 1; i <= inputAmount; i += 1) {
+//     inputDelay += inputStep;
+
+//     createPromise(i, inputDelay)
+//       .then(({ position, delay }) => {
+//         Notiflix.Notify.success(
+//           `✅ Fulfilled promise ${position} in ${delay}ms`,
+//           options
+//         );
+//       })
+//       .catch(({ position, delay }) => {
+//         Notiflix.Notify.failure(
+//           `❌ Rejected promise ${position} in ${delay}ms`,
+//           options
+//         );
+//       });
+//     e.currentTarget.reset();
+//   }
+// }
 function onPromiseCreate(e) {
-  e.preventDefault();
-  const { delay, step, amount } = e.currentTarget.elements;
-  let inputDelay = Number(delay.value);
-  let inputStep = Number(step.value);
-  let inputAmount = Number(amount.value);
-
-  for (let i = 1; i <= inputAmount; i += 1) {
-    inputDelay += inputStep;
-
-    createPromise(i, inputDelay)
-      .then(({ position, delay }) => {
-        Notiflix.Notify.success(
-          `✅ Fulfilled promise ${position} in ${delay}ms`,
-          options
-        );
-      })
-      .catch(({ position, delay }) => {
-        Notiflix.Notify.failure(
-          `❌ Rejected promise ${position} in ${delay}ms`,
-          options
-        );
-      });
-    e.currentTarget.reset();
+    e.preventDefault();
+  
+    let valueDelay = Number(refs.delay.value);
+    let step = Number(refs.step.value);
+    let amount = Number(refs.amount.value);
+  
+    for (let i = 1; i <= amount; i += 1) {
+      let promiseDelay = valueDelay + step * i;
+  
+      createPromise(i, promiseDelay)
+        .then(({ position, delay }) => {
+          Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        })
+        .catch(({ position, delay }) => {
+          Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+        });
+    }
   }
-}
+  
