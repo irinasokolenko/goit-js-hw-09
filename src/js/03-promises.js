@@ -1,4 +1,5 @@
 import Notiflix from 'notiflix';
+
 const form = document.querySelector('form.form');
 const options = {
   position: 'center-bottom',
@@ -30,6 +31,7 @@ function onPromiseCreate(e) {
 
   for (let i = 1; i <= inputAmount; i += 1) {
     inputDelay += inputStep;
+
     createPromise(i, inputDelay)
       .then(({ position, delay }) => {
         Notiflix.Notify.success(
@@ -37,7 +39,6 @@ function onPromiseCreate(e) {
           options
         );
       })
-      
       .catch(({ position, delay }) => {
         Notiflix.Notify.failure(
           `❌ Rejected promise ${position} in ${delay}ms`,
