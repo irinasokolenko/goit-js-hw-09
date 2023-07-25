@@ -22,29 +22,24 @@ function createPromise(position, delay) {
     }, delay);
   });
 }
-function onPromiseCreate(e) {
-  e.preventDefault();
-  const { delay, step, amount } = e.currentTarget.elements;
-  let inputDelay = Number(delay.value);
-  let inputStep = Number(step.value);
-  let inputAmount = Number(amount.value);
-
-  for (let i = 1; i <= inputAmount; i += 1) {
-    inputDelay += inputStep;
-
-    createPromise(i, inputDelay)
-      .then(({ position, delay }) => {
-        Notiflix.Notify.success(
-          `✅ Fulfilled promise ${position} in ${delay}ms`,
-          options
-        );
-      })
-      .catch(({ position, delay }) => {
-        Notiflix.Notify.failure(
-          `❌ Rejected promise ${position} in ${delay}ms`,
-          options
-        );
-      });
-    e.currentTarget.reset();
+  function onPromiseCreate(e) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const firstDelay = Number(formData.get('delay'));
+    const step = Number(formData.get('step'));
+    const amount = Number(formData.get('amount'));
+    let accumulatedDelay = 0;
+    for (let i = 1; i <= amount; i+=) {
+      createPromise(i, firstDelay + accumulatedDelay)
+        .then(({ position, delay }) => {
+          notiflix.Notify.success(`:white_tick: Проміс ${position} виконано за ${delay}мс`);
+        })
+        .catch(({ position, delay }) => {
+          notiflix.Notify.failure(
+            `:x: Проміс ${position} відхилено за ${delay}мс`
+          );
+        });
+      accumulatedDelay += step;
+    }
   }
-}
