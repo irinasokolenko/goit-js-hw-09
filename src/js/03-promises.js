@@ -27,7 +27,7 @@ function onPromiseCreate(e) {
   let inputDelay = Number(delay.value);
   let inputStep = Number(step.value);
   let inputAmount = Number(amount.value);
-
+   inputDelay += inputStep;
   for (let i = 1; i <= inputAmount; i += 1) {
     
     createPromise(i, inputDelay)
@@ -36,7 +36,7 @@ function onPromiseCreate(e) {
           `✅ Fulfilled promise ${position} in ${delay}ms`,
           options
         );
-         inputDelay += inputStep;
+        
       })
       
       .catch(({ position, delay }) => {
