@@ -27,9 +27,10 @@ function createPromise(position, delay) {
 
 function onPromiseCreate(e) {
   e.preventDefault();
-  let valueDelay = Number(refs.delay.value);
-  let step = Number(refs.step.value);
-  let amount = Number(refs.amount.value);
+  const { delay, step, amount } = e.currentTarget.elements;
+  let inputDelay = Number(delay.value);
+  let inputStep = Number(step.value);
+  let inputAmount = Number(amount.value);
 
   for (let i = 1; i <= inputAmount; i += 1) {
     inputDelay += inputStep;
